@@ -20,10 +20,12 @@ config.socketPingTimeout = process.env.SOCKET_PING_TIMEOUT || 20000;
 config.socketPingInterval = process.env.SOCKET_PING_INTERVAL || 25000;
 
 config.posDecimals = process.env.DRO_DECIMALS || 2;
-config.firmwareWaitTime = process.env.FIRMWARE_WAIT_TIME || 10;
-config.grblWaitTime = process.env.GRBL_WAIT_TIME || 1;
-config.smoothieWaitTime = process.env.SMOOTHIE_WAIT_TIME || 1;
-config.tinygWaitTime = process.env.TINYG_WAIT_TIME || 1;
+// Increased defaults for better compatibility with GRBL-ESP32 and modern diode lasers
+// that may take longer to send the welcome string after reset.
+config.firmwareWaitTime = process.env.FIRMWARE_WAIT_TIME || 15;
+config.grblWaitTime = process.env.GRBL_WAIT_TIME || 3;
+config.smoothieWaitTime = process.env.SMOOTHIE_WAIT_TIME || 2;
+config.tinygWaitTime = process.env.TINYG_WAIT_TIME || 2;
 
 config.grblBufferSize = process.env.GRBL_BUFFER_SIZE || 128;
 config.smoothieBufferSize = process.env.SMOOTHIE_BUFFER_SIZE || 64;
